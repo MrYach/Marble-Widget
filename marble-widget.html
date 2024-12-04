@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marble Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .marble-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .marble {
+            width: 50px;
+            height: 50px;
+            background-color: teal;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Marble Widget</h1>
+    <div class="marble-container" id="marbleContainer">
+        <!-- Marbles will be added dynamically here -->
+    </div>
+    <button onclick="resetMarbles()">Reset Marbles</button>
+
+    <script>
+        const marbleContainer = document.getElementById("marbleContainer");
+
+        // Function to create marbles
+        function createMarbles() {
+            marbleContainer.innerHTML = ''; // Clear existing marbles
+            for (let i = 1; i <= 5; i++) {
+                const marble = document.createElement("div");
+                marble.className = "marble";
+                marble.textContent = i; // Optional: Label marbles with numbers
+                marble.addEventListener("click", () => removeMarble(marble));
+                marbleContainer.appendChild(marble);
+            }
+        }
+
+        // Function to remove a marble
+        function removeMarble(marble) {
+            marble.remove();
+        }
+
+        // Function to reset marbles
+        function resetMarbles() {
+            createMarbles();
+        }
+
+        // Initialize marbles on page load
+        createMarbles();
+    </script>
+</body>
+</html>
